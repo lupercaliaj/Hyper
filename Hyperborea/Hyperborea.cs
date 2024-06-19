@@ -63,6 +63,7 @@ public unsafe class Hyperborea : IDalamudPlugin
             EzConfigGui.Window.Flags = ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoScrollbar;
             EzCmd.Add("/hyper", OnCommand);
             Memory = new();
+            Memory.EnableLoadZoneHook();
             SettingsWindow = new();
             LogWindow = new();
             DebugWindow = new();
