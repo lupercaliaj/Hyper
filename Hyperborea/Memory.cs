@@ -54,15 +54,7 @@ public unsafe class Memory
 
     internal nint IsFlightProhibitedDetour(nint a1)
     {
-        try
-        {
-            if (P.Enabled && C.ForcedFlight) return 0;
-        }
-        catch(Exception e)
-        {
-            e.Log();
-        }
-        return IsFlightProhibitedHook.Original(a1);
+        return 0;
     }
 
     private byte FinalizeInstanceContentDetour(nint a1, uint a2)
@@ -130,9 +122,7 @@ public unsafe class Memory
 
     public void EnableFirewall()
     {
-        PacketDispatcher_OnReceivePacketHook.Enable();
-        PacketDispatcher_OnSendPacketHook.Enable();
-        IsFlightProhibitedHook.Enable();
+        
     }
 
     public void DisableFirewall()
