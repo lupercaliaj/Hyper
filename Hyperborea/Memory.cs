@@ -132,6 +132,19 @@ public unsafe class Memory
         IsFlightProhibitedHook.Pause();
     }
 
+    public void EnableLoadZoneHook()
+    {
+        try
+        {
+            LoadZoneHook.Enable();
+            PluginLog.Debug("LoadZoneHook enabled.");
+        }
+        catch (Exception ex)
+        {
+            PluginLog.Error($"Failed to enable LoadZoneHook: {ex.Message}");
+        }
+    }
+
     public bool IsFirewallEnabled => PacketDispatcher_OnSendPacketHook.IsEnabled;
 
     private byte PacketDispatcher_OnSendPacketDetour(nint a1, nint a2, nint a3, byte a4)
